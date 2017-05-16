@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.senierr.lib.ShootButton
+    <com.senierr.shootbutton.ShootButton
         android:id="@+id/cv_view"
         app:circleColor="@color/colorAccent"
         app:circleWidth="8dp"

@@ -1,4 +1,4 @@
-package com.senierr.lib;
+package com.senierr.shootbutton;
 
 import android.content.Context;
 import android.content.res.TypedArray;

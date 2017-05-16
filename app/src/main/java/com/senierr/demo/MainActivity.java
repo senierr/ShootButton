@@ -1,10 +1,10 @@
-package com.senierr.shootbutton;
+package com.senierr.demo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.senierr.lib.ShootButton;
+import com.senierr.shootbutton.ShootButton;
 
 public class MainActivity extends AppCompatActivity {
 
