@@ -6,7 +6,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -25,6 +27,7 @@ public class ShootButton extends View {
     private static final int WIDTH_DEFAULT = 100;   // 默认宽
     private static final int HEIGHT_DEFAULT = 100;   // 默认高
 
+    private Context mContext;
     private Paint mPaint;               // 画笔
 
     private RectF mCircleOval;          // 圆环区域
@@ -54,6 +57,7 @@ public class ShootButton extends View {
 
     public ShootButton(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mContext = context;
         //获取自定义属性和默认值
         TypedArray mTypedArray = context.obtainStyledAttributes(attrs,
                 R.styleable.ShootButton);
@@ -173,12 +177,22 @@ public class ShootButton extends View {
         invalidate();
     }
 
+    public void setCircleColorRes(int circleColorRes) {
+        this.mCircleColor = ContextCompat.getColor(mContext, circleColorRes);
+        invalidate();
+    }
+
     public int getProgressBgColor() {
         return mProgressBgColor;
     }
 
     public void setProgressBgColor(int progressBgColor) {
         this.mProgressBgColor = progressBgColor;
+        invalidate();
+    }
+
+    public void setProgressBgColorRes(int progressBgColorRes) {
+        this.mProgressBgColor = ContextCompat.getColor(mContext, progressBgColorRes);
         invalidate();
     }
 
@@ -191,12 +205,22 @@ public class ShootButton extends View {
         invalidate();
     }
 
+    public void setProgressColorRes(int progressColorRes) {
+        this.mProgressColor = ContextCompat.getColor(mContext, progressColorRes);
+        invalidate();
+    }
+
     public int getCenterColor() {
         return mCenterColor;
     }
 
     public void setCenterColor(int centerColor) {
         this.mCenterColor = centerColor;
+        invalidate();
+    }
+
+    public void setCenterColorRes(int centerColorRes) {
+        this.mCenterColor = ContextCompat.getColor(mContext, centerColorRes);
         invalidate();
     }
 
