@@ -27,7 +27,7 @@ maven { url 'https://jitpack.io' }
 ### 2. 添加依赖
 
 ```java
-compile 'com.github.senierr:ShootButton:1.0.2'
+compile 'com.github.senierr:ShootButton:1.0.4'
 ```
 
 ### 3. XML
