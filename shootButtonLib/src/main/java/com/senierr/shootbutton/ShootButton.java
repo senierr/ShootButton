@@ -1,16 +1,21 @@
 package com.senierr.shootbutton;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 
 /**
  * 自定义带倒计时拍摄按钮
@@ -29,7 +34,7 @@ public class ShootButton extends View {
 
     private Context mContext;
     private Paint mPaint;               // 画笔
-
+    private ColorMatrixColorFilter colorFilter; // 按下颜色矩阵
     private RectF mCircleOval;          // 圆环区域
     private RectF mCenterOval;          // 中心区域
     private float circleMinRadius;      // 圆环内边半径
@@ -75,6 +80,12 @@ public class ShootButton extends View {
 
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
+        colorFilter = new ColorMatrixColorFilter(new float[]{
+                0.6F, 0, 0, 0, 0,
+                0, 0.6F, 0, 0, 0,
+                0, 0, 0.6F, 0, 0,
+                0, 0, 0, 1, 0
+        });
         mCircleOval = new RectF();
         mCenterOval = new RectF();
     }
@@ -117,6 +128,12 @@ public class ShootButton extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        if (isPressed()) {
+            mPaint.setColorFilter(colorFilter);
+        } else {
+            mPaint.setColorFilter(null);
+        }
+
         // 是否显示进度
         if (mProgress > 0) {
             // 进度
@@ -157,6 +174,20 @@ public class ShootButton extends View {
                     getHeight() / 2 + width);
             canvas.drawRoundRect(mCenterOval, mCenterRectRadius, mCenterRectRadius, mPaint);
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                invalidate();
+                break;
+            case MotionEvent.ACTION_CANCEL:
+            case MotionEvent.ACTION_UP:
+                invalidate();
+                break;
+        }
+        return super.onTouchEvent(event);
     }
 
     public float getCircleWidth() {
