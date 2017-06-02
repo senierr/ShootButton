@@ -114,10 +114,10 @@ public class ShootButton extends View {
 
         // 确定圆环画布区域
         int minLength = Math.min(width, height);
-        mCircleOval.set(width / 2 - minLength / 2 + mCircleWidth / 2,
-                height / 2 - minLength / 2 + mCircleWidth / 2,
-                width / 2 + minLength / 2 - mCircleWidth / 2,
-                height / 2 + minLength / 2 - mCircleWidth / 2);
+        mCircleOval.set(width / 2 - minLength / 2 + mCircleWidth / 2 + getPaddingLeft(),
+                height / 2 - minLength / 2 + mCircleWidth / 2 + getPaddingTop(),
+                width / 2 + minLength / 2 - mCircleWidth / 2 - getPaddingRight(),
+                height / 2 + minLength / 2 - mCircleWidth / 2 - getPaddingBottom());
         // 圆环内边半径
         circleMinRadius = (mCircleOval.right - mCircleOval.left - mCircleWidth) / 2;
 
