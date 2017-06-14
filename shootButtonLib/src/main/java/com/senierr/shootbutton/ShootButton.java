@@ -12,6 +12,7 @@ import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -51,6 +52,8 @@ public class ShootButton extends View {
 
     private int mMaxProgress;           // 进度最大值
     private int mProgress;              // 进度
+
+    private boolean isPressed = false;
 
     public ShootButton(Context context) {
         this(context, null);
@@ -127,8 +130,7 @@ public class ShootButton extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        if (isPressed()) {
+        if (isPressed) {
             mPaint.setColorFilter(colorFilter);
         } else {
             mPaint.setColorFilter(null);
@@ -180,10 +182,12 @@ public class ShootButton extends View {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                isPressed = true;
                 invalidate();
                 break;
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
+                isPressed = false;
                 invalidate();
                 break;
         }
