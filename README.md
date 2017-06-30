@@ -27,7 +27,7 @@ maven { url 'https://jitpack.io' }
 ### 2. 添加依赖
 
 ```java
-compile 'com.github.senierr:ShootButton:1.0.4'
+compile 'com.github.senierr:ShootButton:1.0.5'
 ```
 
 ### 3. XML
@@ -38,7 +38,8 @@ compile 'com.github.senierr:ShootButton:1.0.4'
     app:circleWidth="8dp"
     app:centerColor="@color/colorAccent"
     app:centerMode="roundRect"
-    app:centerPadding="8dp"
+    app:centerRectPadding="8dp"
+    app:centerCirclePadding="8dp"
     app:centerRectRadius="8dp"
     app:progressBgColor="@color/colorPrimary"
     app:progressColor="@color/colorPrimaryDark"
@@ -58,7 +59,8 @@ compile 'com.github.senierr:ShootButton:1.0.4'
 | progressColor     | 进度条颜色        | color            |
 | centerMode        | 中心图标类型      | circle/roundRect |
 | centerColor       | 中心图标颜色      | color            |
-| centerPadding     | 中心图标与圆环间距 | dimension        |
+| centerCirclePadding| 中心图标-圆与圆环间距 | dimension        |
+| centerRectPadding | 中心图标-方块与圆环间距 | dimension        |
 | centerRectRadius  | 矩形图标圆角半径   | dimension        |
 | maxProgress       | 进度最大值        | integer          |
 | progress          | 进度值            | integer          |

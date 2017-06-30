@@ -11,7 +11,8 @@
         <attr name="progressBgColor" format= "color"/>
         <attr name="progressColor" format="color"/>
         <attr name="centerColor" format= "color"/>
-        <attr name="centerPadding" format="dimension"/>
+        <attr name="centerCirclePadding" format="dimension"/>
+        <attr name="centerRectPadding" format="dimension"/>
         <attr name="centerRectRadius" format= "dimension"/>
         <attr name="maxProgress" format="integer"/>
         <attr name="progress" format= "integer"/>

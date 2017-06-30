@@ -45,7 +45,8 @@ public class ShootButton extends View {
     private int mProgressBgColor;       // 进度条背景颜色
     private int mProgressColor;         // 进度条颜色
     private int mCenterColor;           // 中心图标颜色
-    private float mCenterPadding;       // 中心图标与圆环间距
+    private float mCenterCirclePadding; // 中心图标-圆与圆环间距
+    private float mCenterRectPadding;   // 中心图标-方块与圆环间距
     private float mCenterRectRadius;    // 中心圆角矩形的圆角半径
 
     private int mCenterMode;            // 中心显示模式
@@ -74,7 +75,8 @@ public class ShootButton extends View {
         mProgressBgColor = mTypedArray.getColor(R.styleable.ShootButton_progressBgColor, Color.GRAY);
         mProgressColor = mTypedArray.getColor(R.styleable.ShootButton_progressColor, Color.RED);
         mCenterColor = mTypedArray.getColor(R.styleable.ShootButton_centerColor, Color.RED);
-        mCenterPadding = mTypedArray.getDimension(R.styleable.ShootButton_centerPadding, 10);
+        mCenterCirclePadding = mTypedArray.getDimension(R.styleable.ShootButton_centerCirclePadding, 10);
+        mCenterRectPadding = mTypedArray.getDimension(R.styleable.ShootButton_centerRectPadding, 10);
         mCenterRectRadius = mTypedArray.getDimension(R.styleable.ShootButton_centerRectRadius, 10);
         mMaxProgress = mTypedArray.getInt(R.styleable.ShootButton_maxProgress, 100);
         mProgress = mTypedArray.getInt(R.styleable.ShootButton_progress, 100);
@@ -164,12 +166,12 @@ public class ShootButton extends View {
             mPaint.setColor(mCenterColor);
             mPaint.setStyle(Paint.Style.FILL);
             canvas.drawCircle(getWidth() / 2, getHeight() / 2,
-                    circleMinRadius - mCenterPadding, mPaint);
+                    circleMinRadius - mCenterCirclePadding, mPaint);
         } else {
             // 中心图标-方块
             mPaint.setColor(mCenterColor);
             mPaint.setStyle(Paint.Style.FILL);
-            int width = (int) Math.sqrt(Math.pow(circleMinRadius - mCenterPadding, 2) / 2);
+            int width = (int) Math.sqrt(Math.pow(circleMinRadius - mCenterRectPadding, 2) / 2);
             mCenterOval.set(getWidth() / 2 - width,
                     getHeight() / 2 - width,
                     getWidth() / 2 + width,
@@ -259,15 +261,6 @@ public class ShootButton extends View {
         invalidate();
     }
 
-    public float getCenterPadding() {
-        return mCenterPadding;
-    }
-
-    public void setCenterPadding(float centerPadding) {
-        this.mCenterPadding = centerPadding;
-        invalidate();
-    }
-
     public float getCenterRectRadius() {
         return mCenterRectRadius;
     }
@@ -301,6 +294,24 @@ public class ShootButton extends View {
 
     public void setProgress(int progress) {
         this.mProgress = progress;
+        invalidate();
+    }
+
+    public float getmCenterCirclePadding() {
+        return mCenterCirclePadding;
+    }
+
+    public void setmCenterCirclePadding(float mCenterCirclePadding) {
+        this.mCenterCirclePadding = mCenterCirclePadding;
+        invalidate();
+    }
+
+    public float getmCenterRectPadding() {
+        return mCenterRectPadding;
+    }
+
+    public void setmCenterRectPadding(float mCenterRectPadding) {
+        this.mCenterRectPadding = mCenterRectPadding;
         invalidate();
     }
 }
